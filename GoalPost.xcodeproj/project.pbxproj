@@ -14,6 +14,7 @@
 		237B8AE621A2EC5A00683B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237B8AE521A2EC5A00683B56 /* Assets.xcassets */; };
 		237B8AE921A2EC5A00683B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237B8AE721A2EC5A00683B56 /* LaunchScreen.storyboard */; };
 		237B8AF521A3072F00683B56 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8AF421A3072F00683B56 /* GoalCell.swift */; };
+		237B8AF721A3473200683B56 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8AF621A3473200683B56 /* GoalType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		237B8AE821A2EC5A00683B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237B8AEA21A2EC5A00683B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237B8AF421A3072F00683B56 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
+		237B8AF621A3473200683B56 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,11 @@
 		237B8ADA21A2EC5900683B56 /* GoalPost */ = {
 			isa = PBXGroup;
 			children = (
-				237B8AE221A2EC5900683B56 /* GoalPost.xcdatamodeld */,
 				237B8AF321A2EC9400683B56 /* Exensions */,
 				237B8AF221A2EC8D00683B56 /* Enums */,
 				237B8AF121A2EC8700683B56 /* View */,
 				237B8AF021A2EC7A00683B56 /* Controller */,
+				237B8AE221A2EC5900683B56 /* GoalPost.xcdatamodeld */,
 				237B8ADB21A2EC5900683B56 /* AppDelegate.swift */,
 				237B8ADF21A2EC5900683B56 /* Main.storyboard */,
 				237B8AE521A2EC5A00683B56 /* Assets.xcassets */,
@@ -91,6 +93,7 @@
 		237B8AF221A2EC8D00683B56 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				237B8AF621A3473200683B56 /* GoalType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				237B8AF521A3072F00683B56 /* GoalCell.swift in Sources */,
+				237B8AF721A3473200683B56 /* GoalType.swift in Sources */,
 				237B8ADE21A2EC5900683B56 /* GoalVC.swift in Sources */,
 				237B8ADC21A2EC5900683B56 /* AppDelegate.swift in Sources */,
 				237B8AE421A2EC5900683B56 /* GoalPost.xcdatamodeld in Sources */,
