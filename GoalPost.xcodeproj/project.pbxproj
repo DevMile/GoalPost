@@ -15,6 +15,8 @@
 		237B8AE921A2EC5A00683B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237B8AE721A2EC5A00683B56 /* LaunchScreen.storyboard */; };
 		237B8AF521A3072F00683B56 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8AF421A3072F00683B56 /* GoalCell.swift */; };
 		237B8AF721A3473200683B56 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8AF621A3473200683B56 /* GoalType.swift */; };
+		239AF46D21A44E8900DF7341 /* CreateGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AF46C21A44E8900DF7341 /* CreateGoalVC.swift */; };
+		239AF46F21A4597500DF7341 /* ViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AF46E21A4597500DF7341 /* ViewControllerExtenstion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		237B8AEA21A2EC5A00683B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237B8AF421A3072F00683B56 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		237B8AF621A3473200683B56 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
+		239AF46C21A44E8900DF7341 /* CreateGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalVC.swift; sourceTree = "<group>"; };
+		239AF46E21A4597500DF7341 /* ViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtenstion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		237B8AF021A2EC7A00683B56 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				239AF46C21A44E8900DF7341 /* CreateGoalVC.swift */,
 				237B8ADD21A2EC5900683B56 /* GoalVC.swift */,
 			);
 			path = Controller;
@@ -101,6 +106,7 @@
 		237B8AF321A2EC9400683B56 /* Exensions */ = {
 			isa = PBXGroup;
 			children = (
+				239AF46E21A4597500DF7341 /* ViewControllerExtenstion.swift */,
 			);
 			path = Exensions;
 			sourceTree = "<group>";
@@ -177,10 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				237B8AF521A3072F00683B56 /* GoalCell.swift in Sources */,
+				239AF46D21A44E8900DF7341 /* CreateGoalVC.swift in Sources */,
 				237B8AF721A3473200683B56 /* GoalType.swift in Sources */,
 				237B8ADE21A2EC5900683B56 /* GoalVC.swift in Sources */,
 				237B8ADC21A2EC5900683B56 /* AppDelegate.swift in Sources */,
 				237B8AE421A2EC5900683B56 /* GoalPost.xcdatamodeld in Sources */,
+				239AF46F21A4597500DF7341 /* ViewControllerExtenstion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
