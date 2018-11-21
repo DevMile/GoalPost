@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateGoalVC: UIViewController, UITextViewDelegate {
-
+    
     @IBOutlet weak var textCreateGoal: UITextView!
     @IBOutlet weak var shortTermBtn: UIButton!
     @IBOutlet weak var longTermBtn: UIButton!
@@ -27,12 +27,10 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textCreateGoal.text != nil {
-            textCreateGoal.text = nil
-            textCreateGoal.textColor = UIColor.black
-        }
+        textCreateGoal.text = ""
+        textCreateGoal.textColor = UIColor.black
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textCreateGoal.text.isEmpty {
             textCreateGoal.text = "What is your goal? Type here..."
@@ -53,6 +51,11 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func nextBtnPressed(_ sender: Any) {
+        if textCreateGoal.text != "" && textCreateGoal.text != "What is your goal? Type here..." {
+            guard let finishGoalVC = storyboard?.instantiateViewController(withIdentifier: "FinishGoalVC") as? FinishGoalVC else {return}
+            finishGoalVC.passData(description: textCreateGoal.text, type: goalType)
+            presentVC(finishGoalVC)
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
