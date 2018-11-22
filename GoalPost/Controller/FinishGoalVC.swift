@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import CoreData
+
 
 class FinishGoalVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var createGoalBtn: UIButton!
     @IBOutlet weak var daysTxtField: UITextField!
     var goalDescription: String!
     var goalType: GoalType!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-         daysTxtField.delegate = self
+        daysTxtField.delegate = self
         createGoalBtn.bindToKeyboard()
-
+        
     }
     
     func passData(description: String, type: GoalType) {
@@ -29,10 +30,35 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createGoalBtnPressed(_ sender: Any) {
-        // store objects in Core Data
+        if daysTxtField.text != "" {
+            save { (success) in
+                dismiss(animated: true, completion: nil)
+                print("Success, data saved")
+            }
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
+        dismissVC()
     }
+    
+    // MARK: - CoreData Methods
+    // TODO: - discuss about completion handlers, make everything clear
+    func save(completion: (_ finished: Bool) -> ()) {
+        guard let contextManager = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {return}
+        let goal = Goal(context: contextManager)
+        goal.goalDescription = goalDescription
+        goal.goalType = goalType.rawValue
+        goal.goalCompletionValue = Int32(daysTxtField.text!)!
+        goal.goalProgress = Int32(0)
+        do {
+            try contextManager.save()
+            completion(true)
+        } catch {
+            print("Error saving context: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+   
     
 }

@@ -87,8 +87,8 @@
 		237B8AF021A2EC7A00683B56 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				239AF46C21A44E8900DF7341 /* CreateGoalVC.swift */,
 				237B8ADD21A2EC5900683B56 /* GoalVC.swift */,
+				239AF46C21A44E8900DF7341 /* CreateGoalVC.swift */,
 				230F100B21A59F3B00E5AE87 /* FinishGoalVC.swift */,
 			);
 			path = Controller;
