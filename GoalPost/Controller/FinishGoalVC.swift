@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class FinishGoalVC: UIViewController, UITextFieldDelegate {
     
@@ -33,7 +34,6 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
         if daysTxtField.text != "" {
             save { (success) in
                 dismiss(animated: true, completion: nil)
-                print("Success, data saved")
             }
         }
     }
@@ -45,7 +45,7 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     // MARK: - CoreData Methods
     // TODO: - discuss about completion handlers, make everything clear
     func save(completion: (_ finished: Bool) -> ()) {
-        guard let contextManager = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {return}
+        guard let contextManager = appDelegate?.persistentContainer.viewContext else {return}
         let goal = Goal(context: contextManager)
         goal.goalDescription = goalDescription
         goal.goalType = goalType.rawValue
