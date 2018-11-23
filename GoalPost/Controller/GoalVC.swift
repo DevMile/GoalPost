@@ -9,10 +9,13 @@
 import UIKit
 import CoreData
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 class GoalVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var goals = [Goal]()
+    let contextManager = appDelegate.persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,42 @@ class GoalVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        fetchNew()
+        tableView.reloadData()
+    }
+    
+    @IBAction func addGoalButton(_ sender: Any) {
+        guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else {return}
+        presentVC(createGoalVC)
+    }
+    
+    func setProgress(atIndexPath indexPath: IndexPath) {
+        let chosenGoal = goals[indexPath.row]
+        if chosenGoal.goalProgress < chosenGoal.goalCompletionValue {
+            chosenGoal.goalProgress += 1
+        } else {
+            return
+        }
+        do {
+            try contextManager.save()
+        } catch {
+            debugPrint("Error setting progress: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - CoreData Methods
+    func fetchData(completion: (_ success: Bool) -> ()) {
+        let request = NSFetchRequest<Goal>(entityName: "Goal")
+        do {
+            goals = try contextManager.fetch(request)
+            completion(true)
+        } catch {
+            debugPrint("Error fetching data \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    func fetchNew() {
         fetchData { (success) in
             if success {
                 if goals.count >= 1 {
@@ -32,24 +71,14 @@ class GoalVC: UIViewController {
                 }
             }
         }
-        tableView.reloadData()
     }
     
-    @IBAction func addGoalButton(_ sender: Any) {
-        guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else {return}
-        presentVC(createGoalVC)
-    }
-    
-    // MARK: - CoreData Methods
-    func fetchData(completion: (_ success: Bool) -> ()) {
-        guard let contextManager = appDelegate?.persistentContainer.viewContext else {return}
-        let request = NSFetchRequest<Goal>(entityName: "Goal")
+    func removeData(atIndexPath indexPath: IndexPath) {
+        contextManager.delete(goals[indexPath.row])
         do {
-            goals = try contextManager.fetch(request)
-            completion(true)
+            try contextManager.save()
         } catch {
-            debugPrint("Error fetching data \(error.localizedDescription)")
-            completion(false)
+            debugPrint("Error removing object: \(error.localizedDescription)")
         }
     }
     
@@ -72,6 +101,30 @@ extension GoalVC: UITableViewDelegate, UITableViewDataSource {
         let goal = goals[indexPath.row]
         cell.configureCell(goal: goal)
         return cell
+    }
+    // Implementing DELETE and ADD 1 DAY functionality on tableView row
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            self.removeData(atIndexPath: indexPath)
+            self.fetchNew()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let addAction = UITableViewRowAction(style: .normal, title: "ADD 1 DAY") { (rowAction, indexPath) in
+            self.setProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        addAction.backgroundColor = #colorLiteral(red: 0.9522624913, green: 0.5417531474, blue: 0.1679017905, alpha: 1)
+        return [deleteAction, addAction]
     }
     
 }

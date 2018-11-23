@@ -9,14 +9,13 @@
 import UIKit
 import CoreData
 
-let appDelegate = UIApplication.shared.delegate as? AppDelegate
-
 class FinishGoalVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createGoalBtn: UIButton!
     @IBOutlet weak var daysTxtField: UITextField!
     var goalDescription: String!
     var goalType: GoalType!
+    let contextManager = appDelegate.persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +44,6 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     // MARK: - CoreData Methods
     // TODO: - discuss about completion handlers, make everything clear
     func save(completion: (_ finished: Bool) -> ()) {
-        guard let contextManager = appDelegate?.persistentContainer.viewContext else {return}
         let goal = Goal(context: contextManager)
         goal.goalDescription = goalDescription
         goal.goalType = goalType.rawValue
