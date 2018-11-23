@@ -72,6 +72,35 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-Nd-erc" userLabel="UndoView">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tY-xr-UwH">
+                                        <rect key="frame" x="278" y="9" width="67" height="41"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                                        <state key="normal" title="UNDO">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="agD-1U-7jr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal deleted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMh-9d-vW3">
+                                        <rect key="frame" x="10" y="14.5" width="133.5" height="30.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83343908629441621" green="0.17565843899108499" blue="0.16657529708539773" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0tY-xr-UwH" secondAttribute="bottom" constant="10" id="0gn-Bc-Pjc"/>
+                                    <constraint firstAttribute="bottom" secondItem="XMh-9d-vW3" secondAttribute="bottom" constant="15" id="92t-u7-hUo"/>
+                                    <constraint firstAttribute="trailing" secondItem="0tY-xr-UwH" secondAttribute="trailing" constant="30" id="D95-M9-dj3"/>
+                                    <constraint firstItem="XMh-9d-vW3" firstAttribute="leading" secondItem="DIx-Nd-erc" secondAttribute="leading" constant="10" id="LD5-aE-WvC"/>
+                                    <constraint firstAttribute="height" constant="60" id="RCu-f1-Ir9"/>
+                                </constraints>
+                            </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wAA-lO-AV2">
                                 <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,10 +208,13 @@
                         <constraints>
                             <constraint firstItem="wAA-lO-AV2" firstAttribute="top" secondItem="qRY-8x-9jf" secondAttribute="bottom" id="71g-sa-58R"/>
                             <constraint firstItem="qRY-8x-9jf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AZ0-jd-BA9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DIx-Nd-erc" secondAttribute="trailing" id="ChY-th-p4z"/>
+                            <constraint firstItem="DIx-Nd-erc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MTZ-Ad-gKG"/>
                             <constraint firstItem="wAA-lO-AV2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XUo-A6-3Lz"/>
                             <constraint firstItem="Fdc-Ir-Ivn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZvQ-xb-p96"/>
                             <constraint firstItem="wAA-lO-AV2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eO2-is-ucx"/>
                             <constraint firstItem="Fdc-Ir-Ivn" firstAttribute="top" secondItem="qRY-8x-9jf" secondAttribute="bottom" constant="60" id="fJw-A8-sgC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DIx-Nd-erc" secondAttribute="bottom" id="hve-NB-C89"/>
                             <constraint firstItem="wAA-lO-AV2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tGQ-1D-4r1"/>
                             <constraint firstItem="qRY-8x-9jf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tGj-mk-7cz"/>
                             <constraint firstItem="qRY-8x-9jf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wkE-4S-o1I"/>
@@ -191,6 +223,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="wAA-lO-AV2" id="50W-84-Eoy"/>
+                        <outlet property="undoView" destination="DIx-Nd-erc" id="ut0-oU-NOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

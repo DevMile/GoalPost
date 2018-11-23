@@ -14,6 +14,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 class GoalVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var undoView: UIView!
     var goals = [Goal]()
     let contextManager = appDelegate.persistentContainer.viewContext
     
@@ -47,6 +48,10 @@ class GoalVC: UIViewController {
         } catch {
             debugPrint("Error setting progress: \(error.localizedDescription)")
         }
+    }
+    
+    @IBAction func undoBtnPressed(_ sender: Any) {
+     
     }
     
     // MARK: - CoreData Methods
