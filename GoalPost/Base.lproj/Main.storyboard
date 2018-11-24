@@ -72,7 +72,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-Nd-erc" userLabel="UndoView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-Nd-erc" userLabel="UndoView">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tY-xr-UwH">
@@ -92,7 +92,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.83343908629441621" green="0.17565843899108499" blue="0.16657529708539773" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.87640783629441621" green="0.29181951648685633" blue="0.18017579681232718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0tY-xr-UwH" secondAttribute="bottom" constant="10" id="0gn-Bc-Pjc"/>
                                     <constraint firstAttribute="bottom" secondItem="XMh-9d-vW3" secondAttribute="bottom" constant="15" id="92t-u7-hUo"/>

@@ -5,6 +5,7 @@
 //  Created by Milan Bojic on 11/19/18.
 //  Copyright © 2018 Milan Bojic. All rights reserved.
 //
+// TODO: - Add close btn on undoView, sort fetched data after undoBtnPressed
 
 import UIKit
 import CoreData
@@ -16,6 +17,7 @@ class GoalVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var undoView: UIView!
     var goals = [Goal]()
+    var deletedGoalIndex: Int32?
     let contextManager = appDelegate.persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -23,6 +25,9 @@ class GoalVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = false
+        tableView.addSubview(undoView)
+        undoView.isHidden = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +56,10 @@ class GoalVC: UIViewController {
     }
     
     @IBAction func undoBtnPressed(_ sender: Any) {
-     
+        contextManager.undoManager?.undo()
+        undoView.isHidden = true
+        fetchNew()
+        tableView.reloadData()
     }
     
     // MARK: - CoreData Methods
@@ -59,6 +67,7 @@ class GoalVC: UIViewController {
         let request = NSFetchRequest<Goal>(entityName: "Goal")
         do {
             goals = try contextManager.fetch(request)
+//            goals = goals.sorted { $0.index < $1.index }
             completion(true)
         } catch {
             debugPrint("Error fetching data \(error.localizedDescription)")
@@ -79,15 +88,15 @@ class GoalVC: UIViewController {
     }
     
     func removeData(atIndexPath indexPath: IndexPath) {
+        contextManager.undoManager = UndoManager()
         contextManager.delete(goals[indexPath.row])
         do {
             try contextManager.save()
+            undoView.isHidden = false
         } catch {
             debugPrint("Error removing object: \(error.localizedDescription)")
         }
     }
-    
-    
 }
 
 extension GoalVC: UITableViewDelegate, UITableViewDataSource {
@@ -121,16 +130,20 @@ extension GoalVC: UITableViewDelegate, UITableViewDataSource {
             self.removeData(atIndexPath: indexPath)
             self.fetchNew()
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.bringSubviewToFront(self.undoView)
         }
         let addAction = UITableViewRowAction(style: .normal, title: "ADD 1 DAY") { (rowAction, indexPath) in
             self.setProgress(atIndexPath: indexPath)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
-        
         deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         addAction.backgroundColor = #colorLiteral(red: 0.9522624913, green: 0.5417531474, blue: 0.1679017905, alpha: 1)
-        return [deleteAction, addAction]
+        let goal = goals[indexPath.row]
+        if goal.goalProgress == goal.goalCompletionValue {
+            return [deleteAction]
+        } else {
+            return [deleteAction, addAction]
+        }
     }
-    
 }
 
