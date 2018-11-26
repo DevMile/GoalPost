@@ -73,11 +73,26 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-Nd-erc" userLabel="UndoView">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-gb-CL9" userLabel="closeBtn">
+                                        <rect key="frame" x="352" y="8" width="15" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="VwA-Mr-sgb"/>
+                                            <constraint firstAttribute="height" constant="14" id="o4H-nF-2tC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" image="close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.37647058820000001" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeUndoView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oCr-kW-sKQ"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tY-xr-UwH">
-                                        <rect key="frame" x="278" y="9" width="67" height="41"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="21"/>
+                                        <rect key="frame" x="275" y="15" width="60" height="38"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
                                         <state key="normal" title="UNDO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -85,20 +100,22 @@
                                             <action selector="undoBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="agD-1U-7jr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal deleted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMh-9d-vW3">
-                                        <rect key="frame" x="10" y="14.5" width="133.5" height="30.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal removed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMh-9d-vW3">
+                                        <rect key="frame" x="10" y="20.5" width="132" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87640783629441621" green="0.29181951648685633" blue="0.18017579681232718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0tY-xr-UwH" secondAttribute="bottom" constant="10" id="0gn-Bc-Pjc"/>
-                                    <constraint firstAttribute="bottom" secondItem="XMh-9d-vW3" secondAttribute="bottom" constant="15" id="92t-u7-hUo"/>
-                                    <constraint firstAttribute="trailing" secondItem="0tY-xr-UwH" secondAttribute="trailing" constant="30" id="D95-M9-dj3"/>
+                                    <constraint firstAttribute="bottom" secondItem="0tY-xr-UwH" secondAttribute="bottom" constant="12" id="0gn-Bc-Pjc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="8MV-gb-CL9" secondAttribute="trailing" id="5Ai-qj-tpQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="XMh-9d-vW3" secondAttribute="bottom" constant="17" id="92t-u7-hUo"/>
+                                    <constraint firstAttribute="trailing" secondItem="0tY-xr-UwH" secondAttribute="trailing" constant="40" id="D95-M9-dj3"/>
+                                    <constraint firstItem="8MV-gb-CL9" firstAttribute="top" secondItem="DIx-Nd-erc" secondAttribute="topMargin" id="GxY-je-Bp5"/>
                                     <constraint firstItem="XMh-9d-vW3" firstAttribute="leading" secondItem="DIx-Nd-erc" secondAttribute="leading" constant="10" id="LD5-aE-WvC"/>
-                                    <constraint firstAttribute="height" constant="60" id="RCu-f1-Ir9"/>
+                                    <constraint firstAttribute="height" constant="65" id="RCu-f1-Ir9"/>
                                 </constraints>
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wAA-lO-AV2">
@@ -490,5 +507,6 @@
     <resources>
         <image name="addGoal" width="35" height="32"/>
         <image name="back" width="14" height="25"/>
+        <image name="close" width="22" height="20"/>
     </resources>
 </document>

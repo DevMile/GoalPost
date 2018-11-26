@@ -27,11 +27,11 @@ class GoalVC: UIViewController {
         tableView.isHidden = false
         tableView.addSubview(undoView)
         undoView.isHidden = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        undoView.isHidden = true
         fetchNew()
         tableView.reloadData()
     }
@@ -62,12 +62,17 @@ class GoalVC: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func closeUndoView(_ sender: Any) {
+        undoView.isHidden = true
+    }
+    
     // MARK: - CoreData Methods
     func fetchData(completion: (_ success: Bool) -> ()) {
         let request = NSFetchRequest<Goal>(entityName: "Goal")
+        let sort = NSSortDescriptor(key: "date", ascending: true)
+        request.sortDescriptors = [sort]
         do {
             goals = try contextManager.fetch(request)
-//            goals = goals.sorted { $0.index < $1.index }
             completion(true)
         } catch {
             debugPrint("Error fetching data \(error.localizedDescription)")

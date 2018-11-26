@@ -21,7 +21,6 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         daysTxtField.delegate = self
         createGoalBtn.bindToKeyboard()
-        
     }
     
     func passData(description: String, type: GoalType) {
@@ -42,7 +41,6 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - CoreData Methods
-    // TODO: - discuss about completion handlers, make everything clear
     func save(completion: (_ finished: Bool) -> ()) {
         let goal = Goal(context: contextManager)
         goal.goalDescription = goalDescription
