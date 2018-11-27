@@ -19,13 +19,10 @@ class GoalCell: UITableViewCell {
         self.labelGoalDescription.text = goal.goalDescription
         self.labelGoalType.text = goal.goalType
         self.labelGoalProgress.text = String(describing: goal.goalProgress)
-        goal.date = Date()
         if goal.goalProgress == goal.goalCompletionValue {
             self.goalCompleted.isHidden = false
         } else {
             self.goalCompleted.isHidden = true
         }
     }
-    
-
 }

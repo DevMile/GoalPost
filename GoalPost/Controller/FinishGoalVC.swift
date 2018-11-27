@@ -47,6 +47,7 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
         goal.goalType = goalType.rawValue
         goal.goalCompletionValue = Int32(daysTxtField.text!)!
         goal.goalProgress = Int32(0)
+        goal.date = Date()
         do {
             try contextManager.save()
             completion(true)
@@ -55,6 +56,4 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
             completion(false)
         }
     }
-   
-    
 }

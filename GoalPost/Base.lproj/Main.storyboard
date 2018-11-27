@@ -328,7 +328,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pja-UT-wlG">
                                         <rect key="frame" x="30" y="137.5" width="315" height="35"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61Z-R6-Zic">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61Z-R6-Zic" customClass="RoundedButton" customModule="GoalPost" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
                                                 <color key="backgroundColor" red="0.0039215686274509803" green="0.72941176470588232" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
@@ -339,7 +339,7 @@
                                                     <action selector="shortTermBtnPressed:" destination="vkb-La-ISO" eventType="touchUpInside" id="B19-gW-Jb0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sX-hP-oTj">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sX-hP-oTj" customClass="RoundedButton" customModule="GoalPost" customModuleProvider="target">
                                                 <rect key="frame" x="165" y="0.0" width="150" height="35"/>
                                                 <color key="backgroundColor" red="0.42745098039215684" green="0.84313725490196079" blue="0.30588235294117649" alpha="0.89501284246575341" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>

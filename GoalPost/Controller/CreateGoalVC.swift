@@ -23,7 +23,6 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
         nextBtn.bindToKeyboard()
         shortTermBtn.setSelectedColor()
         longTermBtn.setDeselectedColor()
-        
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -62,6 +61,4 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
     @IBAction func backBtnPressed(_ sender: Any) {
         dismissVC()
     }
-    
-    
 }

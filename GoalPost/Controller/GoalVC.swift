@@ -5,7 +5,6 @@
 //  Created by Milan Bojic on 11/19/18.
 //  Copyright © 2018 Milan Bojic. All rights reserved.
 //
-// TODO: - Add close btn on undoView, sort fetched data after undoBtnPressed
 
 import UIKit
 import CoreData
